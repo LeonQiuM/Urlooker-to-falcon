@@ -12,14 +12,21 @@
 
 ## 摘要
 
-### 在URLooker的基础上将数据手机整理，重新计算后push到open-falcon
-
 ```text
 1. 监控方式是在urlooker的基础上，将数据dump下来进行整理汇总，计算等操作后再push到open-falcon
 2. agent与server端的数据传输，采用socket的方式
 3. server端控制了agent的定时执行
 4. agent上传数据的同时也会将自己的dump下来的数据push到open-falcon作为独立的数据监测站点,并以一个为zone的tag来作为相同地址监控的区分
 ```
+
+> 1. 在URLooker的基础上将数据手机整理，重新计算后push到open-falcon
+> 2. 由于URLooker的部署可以分布到不同的地点，所以在处理数据的时候，不但将每个点的数据都push到falcon，\
+而且会将所有点的结果进行汇总计算后push到falcon，并以tag:`zone=all`来辨识 
+> 3. push到falcon的数据的endpoint为你在URLooker中监控的url地址
+> 4. metric有只有两个:
+> + 响应平均时间`ResponseTimeAverage`
+> + 平均可用率`CurrentAvailableRate` 
+
 
 ## 环境支持
 + Python3
