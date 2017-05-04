@@ -1,9 +1,9 @@
-# oepn-falcon网站监控
+# 网站监控
 
-##摘要
+## 摘要
 
 ```text
-1. 监控方式是在`urlooker`的基础上，将数据dump下来进行整理汇总，计算均值等操作后再push到open-falcon
+1. 监控方式是在urlooker的基础上，将数据dump下来进行整理汇总，计算均值等操作后再push到open-falcon
 2. agent与server端的数据传输，采用socket的方式
 3. server端控制了agent的定时执行
 4. agent上传数据的同时也会将自己的dump下来的数据push到open-falcon作为独立的数据监测站点,并以一个为zone的tag来作为相同地址监控的区分
