@@ -12,7 +12,7 @@ private_key = "../conf/id_rsa"
 
 agent_list = [
     {
-        "host":"192.168.30.130",  # ssh ip  local-ok
+        "host":"192.168.30.130",  # ssh ip
         "port":22,  #ssh port
         "username":"root",  # ssh user
     },
