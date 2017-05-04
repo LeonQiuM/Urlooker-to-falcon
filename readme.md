@@ -1,8 +1,5 @@
 # 网站监控
 
-![open-falcon效果图](https://github.com/forsaken527/Urlooker-to-falcon/blob/master/img/QQ20170504-165654@2x.png?raw=true
- "最终效果图")
-
 ## 前言
 
 1. 感谢
