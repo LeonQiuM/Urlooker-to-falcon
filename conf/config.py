@@ -5,7 +5,7 @@
 
 
 #open-falcon API
-PUSHHOME = "http://123.59.43.96:1988/v1/push"
+PUSHHOME = "http://127.0.0.1/v1/push"
 
 #agent需要执行的系统命令，请确保在每一个agent上都执行成功
 AGENTCMD = "python3 /data/scripts/urlooker_to_falcon/src/urlooker-to-falcon.py"
