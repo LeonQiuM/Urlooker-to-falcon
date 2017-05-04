@@ -1,9 +1,18 @@
 # 网站监控
 
+## 前言
+
+1. 感谢
++ [URLooker](https://github.com/URLooker "URLooker")
++ [open-falcon](https://github.com/open-falcon "open-falcon")
+
+
 ## 摘要
 
+### 在URLooker的基础上将数据手机整理，重新计算后push到open-falcon
+
 ```text
-1. 监控方式是在urlooker的基础上，将数据dump下来进行整理汇总，计算均值等操作后再push到open-falcon
+1. 监控方式是在urlooker的基础上，将数据dump下来进行整理汇总，计算等操作后再push到open-falcon
 2. agent与server端的数据传输，采用socket的方式
 3. server端控制了agent的定时执行
 4. agent上传数据的同时也会将自己的dump下来的数据push到open-falcon作为独立的数据监测站点,并以一个为zone的tag来作为相同地址监控的区分
@@ -33,4 +42,25 @@ pip install -r requirement.txt
 
 ```bash
 sh bin/setup.sh
+```
+## 添加新的监控节点
+
+1. 首先部署`urlooker`，从其他节点导出监控数据，这样避免了手动添加
+2. 添加`open-falcon`主机对新agent的免密码登录
+3. 添加`open-falcon`主机对新agent的ssh`22`端口防火墙访问权限
+4. `open-falcon`外网防火墙添加agent对其`6699`端口的访问权限
+5. 新节点上存在`/data/scripts/urlooker_to_falcon/src/urlooker-to-falcon.py`
+6. Python3
+7. 依赖：
+    + pymysql
+    + requests
+    + urlparse
+    + socket
+8. 在`agent.py`中的`agent_list`列表添加一个字典，请注意包含以下三个字段：
+```python
+    {
+        "host":"",  
+        "port":22,
+        "username":"root"
+    },
 ```
