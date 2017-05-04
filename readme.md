@@ -41,7 +41,8 @@ pip install -r requirement.txt
 + 启动server
 
 ```bash
-sh bin/setup.sh
+cd src;nohup python3 SocketServer.py &
+cd src;nohup python3 main.py &
 ```
 ## 添加新的监控节点
 
