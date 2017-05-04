@@ -8,10 +8,10 @@ from urllib.parse import urlparse
 import requests,json
 import socket
 
-ServerAddress="123.59.43.96"
+ServerAddress="192.168.30.130"
 ServerPort=6699
 
-PUSHHOME="http://123.59.43.96:1988/v1/push"
+PUSHHOME="http://127.0.0.1/v1/push"
 HOST="127.0.0.1"
 ZoneTag = ""
 PORT=3306
