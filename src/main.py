@@ -74,8 +74,12 @@ while True:
     # loading data
     for agent in agent_list:
         print(agent)
-        SSHClient = SSHTcpClient(agent["host"],agent["port"],agent["username"],private_key)
-        SSHClient.connecting(AGENTCMD)
+        try:
+            SSHClient = SSHTcpClient(agent["host"],agent["port"],agent["username"],private_key)
+            SSHClient.connecting(AGENTCMD)
+        except Exception as text:
+            print(text)
+            continue
 
     AllUrlDict = grouping()
     PushDataList = analyse(AllUrlDict)
