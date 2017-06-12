@@ -20,7 +20,10 @@ class UrlLookerTcpHandler(socketserver.BaseRequestHandler):
         '''
         li = []
         while True:
-            self.data = self.request.recv(1024).strip()
+            try:
+                self.data = self.request.recv(1024).strip()
+            except Exception as text:
+                print(text,"recv timeout")
             if not self.data:
                 break
             li.append(self.data.decode())
