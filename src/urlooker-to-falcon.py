@@ -87,11 +87,11 @@ def handle_data():
     for item in OriginalData:
         CleanData[item["sid"]] = {}
         CleanData[item["sid"]]["resp_time"] = []
-        CleanData[item["sid"]]["resp_code"] = []
+        CleanData[item["sid"]]["result"] = []
     for item in OriginalData:
         if item["sid"] in CleanData.keys():
             CleanData[item["sid"]]["resp_time"].append(item["resp_time"])
-            CleanData[item["sid"]]["resp_code"].append(item["resp_code"])
+            CleanData[item["sid"]]["result"].append(item["result"])
     PushBaseData = {}
     for i, j in CleanData.items():
         PushBaseData[i] = {}
@@ -103,7 +103,7 @@ def handle_data():
         PushBaseData[i]["ResponseTimeAverage"] = ResponseTimeAverage
         ErrorCount = NormalCount = 0
         for item in j["resp_code"]:
-            if item == '200':
+            if item == 0:
                 NormalCount += 1
             else:
                 ErrorCount += 1
