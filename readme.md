@@ -11,10 +11,12 @@
 
 
 ## 摘要
++ 由于原urlooker在监控数据的存储、展示、报警灯跟open-falcon是基本分离的，每个地址的监控需要在全国各地的监测点上部署相同的策略，相同的告警机制，那我们为何不能用open-falcon的api将数据上传。将全国的各个监测点的数据统一到一个screen中，只配置一套监控模板、只使用一个hostgroup，这样是否会显得优雅和便捷。
++ 在原有的urlooker监控基础上，将存储的mysql数据提取出来回传到open-falcon做统一的监控管理
 
 ```text
 1. 监控方式是在urlooker的基础上，将数据dump下来进行整理汇总，计算等操作后再push到open-falcon
-2. agent与server端的数据传输，采用socket的方式
+2. agent与server端的数据传输，采用socket的方式通讯
 3. server端控制了agent的定时执行
 4. agent上传数据的同时也会将自己的dump下来的数据push到open-falcon作为独立的数据监测站点,并以一个为zone的tag来作为相同地址监控的区分
 ```
@@ -23,7 +25,7 @@
 > 2. 由于URLooker的部署可以分布到不同的地点，所以在处理数据的时候，不但将每个点的数据都push到falcon，\
 而且会将所有点的结果进行汇总计算后push到falcon，并以tag:`zone=all`来辨识 
 > 3. push到falcon的数据的endpoint为你在URLooker中监控的url地址
-> 4. metric有只有两个:
+> 4. metric只有两个:
 > + 响应平均时间`ResponseTimeAverage`
 > + 平均可用率`CurrentAvailableRate` 
 
